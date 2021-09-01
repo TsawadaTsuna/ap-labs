@@ -48,15 +48,31 @@ int main(int argc, char **argv) {
         char *oper = argv[1], *add = "add", *sub = "sub", *mult = "mult";
         if (strcmp(oper,add)==0){
             result = calc(1,length,values);
+            printf("%i",values[0]);
+            for (int i = 1; i < length; i++)
+            {
+                printf(" + %i",values[i]);
+            }
+            
         }else if(strcmp(oper,sub)==0){
             result = calc(2,length,values);
+            printf("%i",values[0]);
+            for (int i = 1; i < length; i++)
+            {
+                printf(" - %i",values[i]);
+            }
         }else if(strcmp(oper,mult)==0){
             result = calc(3,length,values);
+            printf("%i",values[0]);
+            for (int i = 1; i < length; i++)
+            {
+                printf(" * %i",values[i]);
+            }
         }else{
             printf("wrong operator. Must be add, sub or mult\n");
             return -1;
         }
-        printf("result: %ld",result);
+        printf(" = %ld\n",result);
         return 0;
     }
 }

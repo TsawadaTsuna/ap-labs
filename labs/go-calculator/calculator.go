@@ -12,17 +12,21 @@ import (
 // multiplication (3)
 func calc(operator int, values []int) int {
 	sum := values[0]
+	fmt.Printf("%d", sum)
 	if operator == 1 {
 		for i := 1; i < len(values); i++ {
 			sum += values[i]
+			fmt.Printf(" + %d", values[i])
 		}
 	} else if operator == 2 {
 		for i := 1; i < len(values); i++ {
 			sum -= values[i]
+			fmt.Printf(" - %d", values[i])
 		}
 	} else if operator == 3 {
 		for i := 1; i < len(values); i++ {
 			sum *= values[i]
+			fmt.Printf(" * %d", values[i])
 		}
 	} else {
 		return -1
@@ -59,7 +63,7 @@ func main() {
 			fmt.Printf("wrong operator. Must be add, sub or mult\n")
 			return
 		}
-		fmt.Printf("result: %d\n", result)
+		fmt.Printf(" = %d\n", result)
 	}
 
 }

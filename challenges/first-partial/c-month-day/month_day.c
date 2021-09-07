@@ -26,26 +26,26 @@ int main(int argc, char **argv) {
     if(argc<3){
         printf("Error. Missing arguments\n");
         printf("Pleas run as ./month_day <year> <yearday>\n");
-        return -1;
+        return 0;
     }else{
         int year = atoi(argv[1]);
         int yearday = atoi(argv[2]);
         if(year == 0 || yearday == 0){
             printf("Error. Not number argument or equal to 0\n");
-            return -1;
+            return 0;
         }
         if(year<1||yearday<1){
             printf("Error. Arguments must be positive numbers\n");
-            return -1;
+            return 0;
         }
         int leap;
         leap = year%4 == 0 && year%100 != 0 || year%400 == 0;
         if(leap == 0&&yearday>365){
             printf("Error. Yearday on a not leap year must be greater than 0 and less than 365\n");
-            return -1;
+            return 0;
         }else if(yearday>366){
             printf("Error. Yearday on a leap year must be greater than 0 and less than 366\n");
-            return -1;
+            return 0;
         }else{
             month_day(year,yearday,pm,pd);
             printf("%s %02d, %d\n",months[m],d,year);

@@ -6,6 +6,8 @@ import (
 	"log"
 	"net"
 	"time"
+	"os"
+	"fmt"
 )
 
 func handleConn(c net.Conn) {
@@ -20,7 +22,18 @@ func handleConn(c net.Conn) {
 }
 
 func main() {
-	listener, err := net.Listen("tcp", "localhost:9090")
+	argv := os.Args
+	argc := len(argv)
+	if argc < 3{
+		fmt.Printf("Missing arguments.\nUse it as go run serverClock.go -port \"port number\"\n")
+		return
+	}
+	if argv[1] != "-port" {
+		fmt.Printf("Missing -port flag\n")
+		return
+	}
+	host := "localhost:"+argv[2]
+	listener, err := net.Listen("tcp", host)
 	if err != nil {
 		log.Fatal(err)
 	}

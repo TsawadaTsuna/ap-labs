@@ -29,13 +29,15 @@ func main() {
 		}
 		
 		go func(city string, conn net.Conn) {
-			status, erro := bufio.NewReader(conn).ReadString('\n')
-			if erro != nil{
-				log.Fatal(erro)
+			for {
+				status, erro := bufio.NewReader(conn).ReadString('\n')
+				if erro != nil{
+					log.Fatal(erro)
+				}
+				fmt.Printf("\r%s : %s",city,status)
 			}
-			fmt.Printf("\r%s : %s",city,status)
 			//io.Copy(os.Stdout, conn)
-			fmt.Println("")
+			//fmt.Println("")
 		}(strings.Split(argv[i],"=")[0],conn)
 		
 	}
